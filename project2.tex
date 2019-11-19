@@ -1,0 +1,283 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{}
+    \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+
+title: Assignment 2 authors: Veronica Leslie, Adelade Kanyongo output:
+html\_notebook ---
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Creating an amortization table to repay a loan of 200000 over 10 years using monthly payments}
+\NormalTok{n <-}\StringTok{ }\DecValTok{10}
+\NormalTok{L <-}\StringTok{ }\DecValTok{200000}
+\NormalTok{i <-}\StringTok{ }\FloatTok{0.03}
+\CommentTok{# converting from yearly interest rate to monthly}
+\NormalTok{monthly_rate <-}\StringTok{ }\NormalTok{(}\DecValTok{1}\OperatorTok{+}\NormalTok{i)}\OperatorTok{^}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{12}\NormalTok{)}\OperatorTok{-}\DecValTok{1}
+\CommentTok{# Calculating the number of payments}
+\NormalTok{No_periods <-}\StringTok{ }\NormalTok{n}\OperatorTok{*}\DecValTok{12}
+\CommentTok{#Determining payment size using annuity immediate formula}
+\NormalTok{Payment_Size <-}\StringTok{ }\NormalTok{(L }\OperatorTok{*}\StringTok{ }\NormalTok{monthly_rate)}\OperatorTok{/}\NormalTok{(}\DecValTok{1}\OperatorTok{-}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\NormalTok{monthly_rate)}\OperatorTok{^}\NormalTok{(}\OperatorTok{-}\NormalTok{No_periods))}
+\CommentTok{# Creating ammortization table using the 'for' loop}
+\NormalTok{amortization_table <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, L),}\DataTypeTok{nrow=}\DecValTok{1}\NormalTok{, }\DataTypeTok{ncol=}\DecValTok{3}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{(time }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{No_periods)\{}
+\NormalTok{  Interest_Paid <-}\StringTok{ }\NormalTok{(amortization_table[ time, }\DecValTok{3}\NormalTok{ ])}\OperatorTok{*}\NormalTok{(monthly_rate)}
+\NormalTok{  Principal_Repaid <-}\StringTok{ }\NormalTok{Payment_Size}\OperatorTok{-}\NormalTok{Interest_Paid}
+\NormalTok{  Outstanding_Balance <-}\StringTok{ }\NormalTok{amortization_table[ time, }\DecValTok{3}\NormalTok{ ] }\OperatorTok{-}\StringTok{ }\NormalTok{Principal_Repaid}
+\NormalTok{  row <-}\StringTok{ }\KeywordTok{c}\NormalTok{(Interest_Paid, Principal_Repaid, Outstanding_Balance)}
+\NormalTok{  amortization_table <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(amortization_table, row)}
+\NormalTok{\}}
+\KeywordTok{colnames}\NormalTok{(amortization_table) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Interest Paid"}\NormalTok{, }\StringTok{"Principal Repaid"}\NormalTok{, }\StringTok{"Outstanding Balance"}\NormalTok{)}
+\CommentTok{#Displaying results }
+\KeywordTok{rownames}\NormalTok{(amortization_table) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"start"}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\NormalTok{No_periods)}
+\KeywordTok{print}\NormalTok{(amortization_table)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Interest Paid Principal Repaid Outstanding Balance
+## start      0.000000            0.000        2.000000e+05
+## 1        493.253954         1434.226        1.985658e+05
+## 2        489.716765         1437.764        1.971280e+05
+## 3        486.170852         1441.310        1.956867e+05
+## 4        482.616194         1444.864        1.942418e+05
+## 5        479.052769         1448.428        1.927934e+05
+## 6        475.480556         1452.000        1.913414e+05
+## 7        471.899533         1455.581        1.898858e+05
+## 8        468.309678         1459.171        1.884267e+05
+## 9        464.710969         1462.769        1.869639e+05
+## 10       461.103385         1466.377        1.854975e+05
+## 11       457.486904         1469.993        1.840275e+05
+## 12       453.861504         1473.619        1.825539e+05
+## 13       450.227162         1477.253        1.810766e+05
+## 14       446.583857         1480.897        1.795957e+05
+## 15       442.931567         1484.549        1.781112e+05
+## 16       439.270269         1488.210        1.766230e+05
+## 17       435.599942         1491.880        1.751311e+05
+## 18       431.920562         1495.560        1.736355e+05
+## 19       428.232108         1499.248        1.721363e+05
+## 20       424.534557         1502.946        1.706334e+05
+## 21       420.827888         1506.652        1.691267e+05
+## 22       417.112076         1510.368        1.676163e+05
+## 23       413.387100         1514.093        1.661022e+05
+## 24       409.652938         1517.827        1.645844e+05
+## 25       405.909566         1521.571        1.630628e+05
+## 26       402.156962         1525.323        1.615375e+05
+## 27       398.395103         1529.085        1.600084e+05
+## 28       394.623966         1532.856        1.584756e+05
+## 29       390.843529         1536.637        1.569389e+05
+## 30       387.053768         1540.427        1.553985e+05
+## 31       383.254660         1544.226        1.538543e+05
+## 32       379.446183         1548.034        1.523063e+05
+## 33       375.628313         1551.852        1.507544e+05
+## 34       371.801027         1555.679        1.491987e+05
+## 35       367.964302         1559.516        1.476392e+05
+## 36       364.118115         1563.362        1.460758e+05
+## 37       360.262442         1567.218        1.445086e+05
+## 38       356.397260         1571.083        1.429375e+05
+## 39       352.522545         1574.958        1.413626e+05
+## 40       348.638274         1578.842        1.397837e+05
+## 41       344.744424         1582.736        1.382010e+05
+## 42       340.840970         1586.639        1.366144e+05
+## 43       336.927889         1590.552        1.350238e+05
+## 44       333.005158         1594.475        1.334293e+05
+## 45       329.072752         1598.408        1.318309e+05
+## 46       325.130647         1602.350        1.302286e+05
+## 47       321.178821         1606.302        1.286223e+05
+## 48       317.217248         1610.263        1.270120e+05
+## 49       313.245904         1614.234        1.253978e+05
+## 50       309.264767         1618.216        1.237796e+05
+## 51       305.273810         1622.207        1.221574e+05
+## 52       301.273011         1626.207        1.205312e+05
+## 53       297.262345         1630.218        1.189009e+05
+## 54       293.241788         1634.239        1.172667e+05
+## 55       289.211315         1638.269        1.156284e+05
+## 56       285.170901         1642.309        1.139861e+05
+## 57       281.120523         1646.360        1.123398e+05
+## 58       277.060156         1650.420        1.106893e+05
+## 59       272.989774         1654.491        1.090348e+05
+## 60       268.909354         1658.571        1.073763e+05
+## 61       264.818870         1662.661        1.057136e+05
+## 62       260.718299         1666.762        1.040469e+05
+## 63       256.607614         1670.873        1.023760e+05
+## 64       252.486791         1674.994        1.007010e+05
+## 65       248.355805         1679.125        9.902186e+04
+## 66       244.214631         1683.266        9.733860e+04
+## 67       240.063243         1687.417        9.565118e+04
+## 68       235.901617         1691.579        9.395960e+04
+## 69       231.729728         1695.751        9.226385e+04
+## 70       227.547549         1699.933        9.056392e+04
+## 71       223.355056         1704.125        8.885979e+04
+## 72       219.152224         1708.328        8.715147e+04
+## 73       214.939026         1712.541        8.543892e+04
+## 74       210.715437         1716.765        8.372216e+04
+## 75       206.481431         1720.999        8.200116e+04
+## 76       202.236984         1725.243        8.027592e+04
+## 77       197.982068         1729.498        7.854642e+04
+## 78       193.716659         1733.764        7.681266e+04
+## 79       189.440730         1738.040        7.507462e+04
+## 80       185.154255         1742.326        7.333229e+04
+## 81       180.857209         1746.623        7.158567e+04
+## 82       176.549565         1750.931        6.983474e+04
+## 83       172.231297         1755.249        6.807949e+04
+## 84       167.902379         1759.578        6.631991e+04
+## 85       163.562785         1763.918        6.455599e+04
+## 86       159.212489         1768.268        6.278772e+04
+## 87       154.851463         1772.629        6.101509e+04
+## 88       150.479682         1777.001        5.923809e+04
+## 89       146.097119         1781.383        5.745671e+04
+## 90       141.703747         1785.777        5.567093e+04
+## 91       137.299541         1790.181        5.388075e+04
+## 92       132.884472         1794.596        5.208616e+04
+## 93       128.458514         1799.022        5.028713e+04
+## 94       124.021641         1803.459        4.848368e+04
+## 95       119.573825         1807.907        4.667577e+04
+## 96       115.115040         1812.365        4.486340e+04
+## 97       110.645258         1816.835        4.304657e+04
+## 98       106.164453         1821.316        4.122525e+04
+## 99       101.672596         1825.808        3.939945e+04
+## 100       97.169662         1830.311        3.756913e+04
+## 101       92.655622         1834.825        3.573431e+04
+## 102       88.130449         1839.350        3.389496e+04
+## 103       83.594116         1843.886        3.205107e+04
+## 104       79.046595         1848.434        3.020264e+04
+## 105       74.487859         1852.993        2.834965e+04
+## 106       69.917879         1857.562        2.649209e+04
+## 107       65.336629         1862.144        2.462994e+04
+## 108       60.744080         1866.736        2.276321e+04
+## 109       56.140205         1871.340        2.089187e+04
+## 110       51.524975         1875.955        1.901591e+04
+## 111       46.898363         1880.582        1.713533e+04
+## 112       42.260341         1885.220        1.525011e+04
+## 113       37.610879         1889.869        1.336024e+04
+## 114       32.949951         1894.530        1.146571e+04
+## 115       28.277528         1899.203        9.566505e+03
+## 116       23.593582         1903.887        7.662618e+03
+## 117       18.898083         1908.582        5.754036e+03
+## 118       14.191005         1913.289        3.840746e+03
+## 119        9.472317         1918.008        1.922738e+03
+## 120        4.741992         1922.738       -9.049472e-11
+\end{verbatim}
+
+
+\end{document}
